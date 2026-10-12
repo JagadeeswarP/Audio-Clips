@@ -11,6 +11,7 @@ from voice_engine import (
     VOICE_PRESETS,
     VOICE_OPTIONS,
     generate_speech_edge,
+    generate_speech_elevenlabs,
     preprocess_english_text,
     text_to_ssml
 )
@@ -34,6 +35,13 @@ app.add_middleware(
 # Create output directory for generated audio files
 AUDIO_OUTPUT_DIR = os.path.join(os.path.dirname(__file__), "generated_audio")
 os.makedirs(AUDIO_OUTPUT_DIR, exist_ok=True)
+
+# Edge TTS is convenient for local use but Microsoft's public endpoint can deny
+# requests from cloud-hosting IP ranges. Set TTS_PROVIDER=elevenlabs and provide
+# ELEVENLABS_API_KEY on a hosted deployment for a supported production path.
+TTS_PROVIDER = os.getenv("TTS_PROVIDER", "edge").lower()
+ELEVENLABS_API_KEY = os.getenv("ELEVENLABS_API_KEY", "")
+ELEVENLABS_VOICE_ID = os.getenv("ELEVENLABS_VOICE_ID", "pNInz6obpgDQGcFmaJgB")
 
 
 class SpeechRequest(BaseModel):
@@ -90,16 +98,30 @@ async def generate_speech(request: SpeechRequest):
     filepath = os.path.join(AUDIO_OUTPUT_DIR, filename)
 
     try:
-        await generate_speech_edge(
-            text=request.text,
-            output_filepath=filepath,
-            voice=request.voice,
-            pitch=request.pitch,
-            rate=request.rate,
-            volume=request.volume,
-            pause_comma_ms=request.comma_pause,
-            pause_period_ms=request.period_pause
-        )
+        if TTS_PROVIDER == "elevenlabs":
+            if not ELEVENLABS_API_KEY:
+                raise HTTPException(
+                    status_code=503,
+                    detail="ElevenLabs is selected but ELEVENLABS_API_KEY is not configured."
+                )
+            await asyncio.to_thread(
+                generate_speech_elevenlabs,
+                request.text,
+                filepath,
+                ELEVENLABS_API_KEY,
+                ELEVENLABS_VOICE_ID,
+            )
+        else:
+            await generate_speech_edge(
+                text=request.text,
+                output_filepath=filepath,
+                voice=request.voice,
+                pitch=request.pitch,
+                rate=request.rate,
+                volume=request.volume,
+                pause_comma_ms=request.comma_pause,
+                pause_period_ms=request.period_pause
+            )
 
         return JSONResponse(content={
             "success": True,
@@ -108,7 +130,18 @@ async def generate_speech(request: SpeechRequest):
             "voice": request.voice,
             "file_size": os.path.getsize(filepath)
         })
+    except HTTPException:
+        raise
     except Exception as e:
+        if TTS_PROVIDER == "edge" and "403" in str(e):
+            raise HTTPException(
+                status_code=503,
+                detail=(
+                    "Microsoft Edge TTS denied this cloud-hosted request. "
+                    "Configure a supported provider by setting TTS_PROVIDER=elevenlabs "
+                    "and ELEVENLABS_API_KEY in Render."
+                )
+            )
         raise HTTPException(status_code=500, detail=f"Speech synthesis error: {str(e)}")
 
 
