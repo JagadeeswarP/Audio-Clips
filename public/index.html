@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>US Voice Narrator Studio - Ultra-Realistic Human AI Voices</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo-group">
+                <div class="logo-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path>
+                        <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                        <line x1="12" y1="19" x2="12" y2="22"></line>
+                    </svg>
+                </div>
+                <div>
+                    <h1>US Voice Studio</h1>
+                    <p class="subtitle">Ultra-Realistic Human Voice Engine • Shorts, Reels, Podcasts & Documentaries</p>
+                </div>
+            </div>
+            <div class="header-badges">
+                <span class="badge badge-accent">
+                    <span class="pulse-dot"></span> en-US Neural Engine
+                </span>
+                <span class="badge">Human Voice Pacing</span>
+            </div>
+        </header>
+
+        <!-- Main Layout -->
+        <main class="studio-grid">
+            <!-- Left Panel: Persona Controls & Presets -->
+            <section class="panel controls-panel">
+                <div class="panel-header">
+                    <h2>Voice Persona Preset</h2>
+                    <span class="panel-tag">Acoustics</span>
+                </div>
+
+                <div class="preset-selector">
+                    <button class="preset-card active" data-preset="deep_narrator">
+                        <div class="preset-icon">🎙️</div>
+                        <div class="preset-info">
+                            <h3>Deep Baritone Narrator</h3>
+                            <p>Grounded, warm American male baritone with natural flow</p>
+                        </div>
+                    </button>
+
+                    <button class="preset-card" data-preset="cinematic_thriller">
+                        <div class="preset-icon">🔮</div>
+                        <div class="preset-info">
+                            <h3>Cinematic Thriller</h3>
+                            <p>Deep baritone, suspenseful pacing & breath room</p>
+                        </div>
+                    </button>
+
+                    <button class="preset-card" data-preset="conversational_creator">
+                        <div class="preset-icon">🚀</div>
+                        <div class="preset-info">
+                            <h3>Conversational Creator</h3>
+                            <p>Authentic, engaging voice for Shorts, Reels & TikTok</p>
+                        </div>
+                    </button>
+
+                    <button class="preset-card" data-preset="documentary_female">
+                        <div class="preset-icon">🌌</div>
+                        <div class="preset-info">
+                            <h3>Documentary Female</h3>
+                            <p>Smooth, intelligent delivery for science & history</p>
+                        </div>
+                    </button>
+
+                    <button class="preset-card" data-preset="psychology_insights">
+                        <div class="preset-icon">🧠</div>
+                        <div class="preset-info">
+                            <h3>Psychology & Insights</h3>
+                            <p>Thoughtful cadence for human mind facts & quotes</p>
+                        </div>
+                    </button>
+
+                    <button class="preset-card" data-preset="friendly_explainer">
+                        <div class="preset-icon">💬</div>
+                        <div class="preset-info">
+                            <h3>Friendly Explainer</h3>
+                            <p>Personable, natural delivery for how-tos and educational Shorts</p>
+                        </div>
+                    </button>
+
+                    <button class="preset-card" data-preset="warm_storyteller">
+                        <div class="preset-icon">📖</div>
+                        <div class="preset-info">
+                            <h3>Warm Storyteller</h3>
+                            <p>Reflective female narration with unhurried, emotional pacing</p>
+                        </div>
+                    </button>
+
+                    <button class="preset-card" data-preset="upbeat_host">
+                        <div class="preset-icon">✨</div>
+                        <div class="preset-info">
+                            <h3>Upbeat Social Host</h3>
+                            <p>Bright, quick, engaging energy for social video formats</p>
+                        </div>
+                    </button>
+
+                    <button class="preset-card" data-preset="calm_authority">
+                        <div class="preset-icon">🎓</div>
+                        <div class="preset-info">
+                            <h3>Calm Authority</h3>
+                            <p>Measured, trustworthy delivery for technical and educational topics</p>
+                        </div>
+                    </button>
+                </div>
+
+                <!-- Custom Parameters Accordion -->
+                <div class="tuning-section">
+                    <div class="tuning-header">
+                        <h3>Acoustic Fine-Tuning</h3>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="select-label" for="voice-select">Voice Model</label>
+                        <select id="voice-select" class="voice-select">
+                            <option value="en-US-GuyNeural">Guy - American Male (Baritone)</option>
+                            <option value="en-US-ChristopherNeural">Christopher - Cinematic Male</option>
+                            <option value="en-US-EricNeural">Eric - Conversational Male</option>
+                            <option value="en-US-JennyNeural">Jenny - Professional Female</option>
+                            <option value="en-US-AriaNeural">Aria - Expressive Female</option>
+                            <option value="en-US-AvaNeural">Ava - Modern Female</option>
+                            <option value="en-US-AndrewNeural">Andrew - Authentic Male</option>
+                            <option value="en-US-BrianNeural">Brian - Relaxed Conversational Male</option>
+                            <option value="en-US-DavisNeural">Davis - Polished Explainer Male</option>
+                            <option value="en-US-JacobNeural">Jacob - Friendly Creator Male</option>
+                            <option value="en-US-RogerNeural">Roger - Mature Reassuring Male</option>
+                            <option value="en-US-SteffanNeural">Steffan - Clear Tutorial Male</option>
+                            <option value="en-US-TonyNeural">Tony - Energetic Social Male</option>
+                            <option value="en-US-AmberNeural">Amber - Warm Natural Female</option>
+                            <option value="en-US-AnaNeural">Ana - Bright Creator Female</option>
+                            <option value="en-US-AshleyNeural">Ashley - Confident Conversational Female</option>
+                            <option value="en-US-CoraNeural">Cora - Smooth Storyteller Female</option>
+                            <option value="en-US-ElizabethNeural">Elizabeth - Refined Narrative Female</option>
+                            <option value="en-US-EmmaNeural">Emma - Friendly Clear Female</option>
+                            <option value="en-US-MichelleNeural">Michelle - Professional Educational Female</option>
+                            <option value="en-US-MonicaNeural">Monica - Empathetic Wellness Female</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <div class="slider-label">
+                            <span>Pitch Shift (Depth)</span>
+                            <span id="pitch-val" class="val-tag">-4Hz</span>
+                        </div>
+                        <input type="range" id="pitch-slider" min="-18" max="6" value="-4" step="1">
+                        <div class="slider-hints">
+                            <span>Extra Deep (-18Hz)</span>
+                            <span>Natural (0Hz)</span>
+                            <span>Higher (+6Hz)</span>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <div class="slider-label">
+                            <span>Delivery Pacing (Speaking Rate)</span>
+                            <span id="rate-val" class="val-tag">+4%</span>
+                        </div>
+                        <input type="range" id="rate-slider" min="-10" max="25" value="4" step="1">
+                        <div class="slider-hints">
+                            <span>Slower (-10%)</span>
+                            <span>Natural (+4%)</span>
+                            <span>Fast (+25%)</span>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <div class="slider-label">
+                            <span>Comma Breathing Pause</span>
+                            <span id="comma-val" class="val-tag">160ms</span>
+                        </div>
+                        <input type="range" id="comma-slider" min="80" max="600" value="160" step="10">
+                    </div>
+
+                    <div class="control-group">
+                        <div class="slider-label">
+                            <span>Sentence Break Pause (Periods)</span>
+                            <span id="period-val" class="val-tag">400ms</span>
+                        </div>
+                        <input type="range" id="period-slider" min="200" max="1500" value="400" step="10">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Panel: Script Studio & Audio Player -->
+            <section class="panel studio-panel">
+                <div class="panel-header">
+                    <h2>Script Studio</h2>
+                    <div class="sample-pills">
+                        <span class="pill-label">Quick Samples:</span>
+                        <button class="sample-btn" data-sample="psychology">🧠 Psychology</button>
+                        <button class="sample-btn" data-sample="mystery">🔮 Mystery</button>
+                        <button class="sample-btn" data-sample="documentary">🌌 Documentary</button>
+                        <button class="sample-btn" data-sample="mindset">💡 Mindset</button>
+                    </div>
+                </div>
+
+                <div class="script-container">
+                    <textarea id="script-input" placeholder="Enter your script here for ultra-realistic human AI voice narration..." dir="auto"></textarea>
+                    <div class="script-footer">
+                        <span id="char-count">0 characters</span>
+                        <button id="format-ssml-btn" class="btn-secondary">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="16 18 22 12 16 6"></polyline>
+                                <polyline points="8 6 2 12 8 18"></polyline>
+                            </svg>
+                            View SSML Code
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Generate Action Button -->
+                <div class="action-row">
+                    <button id="generate-btn" class="btn-primary btn-glow">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        </svg>
+                        <span>Generate Natural Voice Speech</span>
+                    </button>
+                </div>
+
+                <!-- SSML Preview Container (Hidden by default) -->
+                <div id="ssml-box" class="ssml-box hidden">
+                    <div class="ssml-header">
+                        <span>Generated W3C SSML Markup</span>
+                        <button id="close-ssml" class="btn-icon">&times;</button>
+                    </div>
+                    <pre><code id="ssml-content"></code></pre>
+                </div>
+
+                <!-- Audio Output Card -->
+                <div id="audio-card" class="audio-card hidden">
+                    <div class="audio-header">
+                        <div class="audio-info">
+                            <span class="audio-status-dot"></span>
+                            <div>
+                                <h4 id="audio-title">Narration Audio Ready</h4>
+                                <p id="audio-meta">en-US-GuyNeural • -4Hz Baritone • +4% Pace</p>
+                            </div>
+                        </div>
+                        <a id="download-btn" class="btn-secondary" download="us_narration.mp3">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            Download MP3
+                        </a>
+                    </div>
+
+                    <!-- Waveform Animation -->
+                    <div class="visualizer-container">
+                        <canvas id="waveform-canvas" height="60"></canvas>
+                    </div>
+
+                    <!-- Audio Element -->
+                    <audio id="audio-player" controls></audio>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
